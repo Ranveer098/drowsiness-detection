@@ -1,0 +1,15 @@
+
+
+Date: 2023-11-22 23:38:31
+Drowsiness count: 1
+Time interval of drowsiness: 00:00:02
+
+
+Date: 2023-11-22 23:38:40
+Drowsiness count: 2
+Time interval of drowsiness: 00:00:02
+
+
+Date: 2023-11-22 23:38:52
+Drowsiness count: 3
+Time interval of drowsiness: 00:00:02

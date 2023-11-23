@@ -5,7 +5,6 @@ import dlib
 import cv2
 import datetime
 
-# Define a function to calculate the eye aspect ratio
 def eye_aspect_ratio(eye):
     A = distance.euclidean(eye[1], eye[5]) 
     B = distance.euclidean(eye[2], eye[4]) 
@@ -31,6 +30,9 @@ drowsiness_count = 0
 
 file_name = "drowsiness_timestamps.txt"
 file = open(file_name, "a")
+
+leftEye = None
+rightEye = None
 
 while True:
     ret, frame = cap.read()
@@ -79,10 +81,12 @@ while True:
     cv2.putText(frame, "Detecting eyes...", (10, 30),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
     
-    for (i, j) in zip(range(0, len(leftEye)), range(len(leftEye) - 1)):
-        cv2.line(frame, tuple(leftEye[i]), tuple(leftEye[j]), (0, 255, 0), 1)
-    for (i, j) in zip(range(0, len(rightEye)), range(len(rightEye) - 1)):
-        cv2.line(frame, tuple(rightEye[i]), tuple(rightEye[j]), (0, 255, 0), 1)
+    if leftEye is not None:
+        for (i, j) in zip(range(0, len(leftEye)), range(len(leftEye) - 1)):
+            cv2.line(frame, tuple(leftEye[i]), tuple(leftEye[j]), (0, 255, 0), 1)
+    if rightEye is not None:
+        for (i, j) in zip(range(0, len(rightEye)), range(len(rightEye) - 1)):
+            cv2.line(frame, tuple(rightEye[i]), tuple(rightEye[j]), (0, 255, 0), 1)
 
     cv2.imshow("Frame", frame)
 
